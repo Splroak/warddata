@@ -4,7 +4,6 @@ Created on Thu Jun 13 17:56:43 2019
 
 @author: Anh Hoang
 """
-#TODO: make the scale into percentage
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -52,6 +51,7 @@ df6 = pivot_table('radiant_deward_efficiency','radiant_win','ID')
 df7 = pivot_table('dire_deward_efficiency','radiant_win','ID')
 # Inflate both tables with continuous numbers in range (0,16) (if they are discrete before)
 for i in range(50):
+    # The names of the columns is changed to float type to match Python default type
     if float("{:.1f}".format(i)) not in df2.columns:
         df2[float("{:.1f}".format(i))] = 0
         

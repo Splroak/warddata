@@ -94,18 +94,8 @@ ward_times_legend = []
 ward_times_ancient = []
 ward_times_archon = []
 ward_times_divine = []
-'''
-for k in range(len(obs_log)):
-            if len(obs_log) > 0:
-                if obs_log[k]['time'] > 0:
-                    time = strftime('%H:%M:%S',gmtime(obs_log[k]['time']))
-                    ward_timestamps.append(time)
-                else:
-                    time = strftime('%H:%M:%S',gmtime(-obs_log[k]['time']))
-                    ward_timestamps.append('-' + time)
-            else:
-                ward_timestamps.append(None)
-'''
+
+# DataFrames to plot the warding time differences between the rank tiers
 df1 = df[df.rank_tier == 'Archon']
 for i in range(len(df1)):
     ward_times_archon += df1.iloc[i,2]

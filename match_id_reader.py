@@ -5,6 +5,9 @@ Created on Mon May 20 12:18:31 2019
 @author: Anh Hoang
 
 Generate a batch of IDs to work with
+
+There are 4 json files. The reason there are 4 separated files (instead of 1) was to avoid 502 error, I figured out how to bypass the error,
+but the project works fine with 4 files so I don't call the API again (also it costs money and I'm broke)
 """
 from ratelimiter import RateLimiter
 from urllib.request import Request,urlopen
@@ -51,7 +54,7 @@ def super_api_call():
         while len(json_output) < 500:
             if len(json_output) == 0:
                 json_response = match_list_api_call(BASE_MATCH_ID_URL, OPENDOTA_API_KEY,'?')         
-            else: #SOMETHING WRONG WITH THIS YOU HAVE TO FIGURE THIS OUT!
+            else:
                 last_id = str(valid_match_id_response[-1])
                 json_response = match_list_api_call(BASE_MATCH_ID_URL, OPENDOTA_API_KEY,'&',START_ID_PARAMETER,last_id)
                 
@@ -60,9 +63,9 @@ def super_api_call():
             print(len(valid_match_id_response))
         
             for match in valid_match_id_response:
-                # JSON of a match
+                # JSON response of a match
                 json_result = match_detail_api_call("https://api.opendota.com/api/matches/" + str(match) + '?' + OPENDOTA_API_KEY)
-                if (json_result['human_players'] == 10):
+                if ('observer_kills' in json_result['players'][0]) and (json_result['human_players'] == 10):
                     json_output.append(json_result)
             print('valid matches = ' + str(len(json_output)))
     except HTTPError as e:
