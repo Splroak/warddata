@@ -14,10 +14,8 @@ from urllib.request import Request,urlopen
 from urllib.error import HTTPError
 import json
 
-#FIXME: 'observer_kills' in json_result['players'][0]) and (
-# save this one for api call
-
-OPENDOTA_API_KEY = "api_key=6fb4346f-3d4f-4ef8-9254-39a1e0370967"
+# keys can be requested at https://www.opendota.com/api-keys
+OPENDOTA_API_KEY = "xxx"
 
 # The base URL to get match_id from official Dota API
 BASE_MATCH_ID_URL = "https://api.opendota.com/api/publicMatches"
