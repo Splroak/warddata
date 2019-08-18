@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jul 26 11:56:35 2019
-
-@author: ADMIN
+The purpose of this file is to find the difference in warding between different ranks.
+Although for now, there are no differences, it can be extended for future research
 """
 
 import pandas as pd
